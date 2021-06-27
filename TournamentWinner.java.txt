@@ -1,0 +1,38 @@
+import java.util.*;
+
+class Program {
+
+  public String tournamentWinner(
+      ArrayList<ArrayList<String>> competitions, ArrayList<Integer> results) {
+    // Write your code here.
+		int reslen=results.size();
+		int i=0;
+		HashMap<String,Integer> points = new HashMap<String,Integer>();
+		while(i<reslen){
+			int pos=results.get(i);
+			if(pos==0){
+				pos=1;
+			}
+			else{
+				pos=0;
+			}
+			if(points.get(competitions.get(i).get(pos))==null){
+				points.put(competitions.get(i).get(pos),0);
+			}
+			points.put(competitions.get(i).get(pos),points.get(competitions.get(i).get(pos))+3);
+			i++;
+		}
+		int last=0;
+		String keyS=null;
+for(String j : points.keySet())
+{
+    if(points.get(j) > last)
+    {
+        keyS = j;
+        last = points.get(j);
+    }
+}
+			
+    return (String)keyS;
+  }
+}
